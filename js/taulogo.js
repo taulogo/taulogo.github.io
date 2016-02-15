@@ -6,9 +6,8 @@ var RATIO_W, RATIO_H;
 var logo_img = null;
 var emojiArea = null;
 
-var img_canvas = document.getElementById("img_canvas");
-var ctx = img_canvas.getContext('2d');
-ctx.imageSmoothingEnabled = false;
+var img_canvas;
+var ctx;
 
 //draw logo
 function init_logo() {
@@ -83,11 +82,11 @@ function first_emoji() {
 }
 
 function setup_url_button() {
-	$("#url_button").click(function() { 
+	$("#url_button").closest('form').on('submit', function(e) {
+		e.preventDefault();
 		insert_in_logo($("#inputImgUrl").val(),true); 
 	});
 }
-
 
 function downloadImg() {
 	var link = document.getElementById("downloadImg");
@@ -99,7 +98,13 @@ function setup_download() {
 	$("#downloadImg").click(function() {downloadImg();});
 }
 
-setup_url_button();
-setup_emojis();
-init_logo();
-setup_download();
+function init_all() {
+	img_canvas = document.getElementById("img_canvas");
+	ctx = img_canvas.getContext('2d');
+	ctx.imageSmoothingEnabled = false;
+
+	setup_url_button();
+	setup_emojis();
+	init_logo();
+	setup_download();
+}
