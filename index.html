@@ -20,7 +20,7 @@
 	<body onload="init_all();">
 		<div class="jumbotron">
 			<div class="container">
-				<h2>מתקשים עם המתקשים</h2>
+				<h1>המותג</h1>
 				<h4>מחולל לוגואים של אוניברסיטת תל אביב</h4>
 				<!-- <p class="lead">מתקשים עם המתקשים.</p> -->
 			</div>
@@ -39,14 +39,14 @@
 				<div class="col-md-8" style="text-align: center">									
 					<br><hr>
 					<h3>בחר אימוג׳י או הדבק לינק לתמונה</h3>
-					<h6>(הכי טוב png שקוף)</h6>
+					<h6>לשמירה: לחיצה ימנית על התמונה ו״שמור בשם״</h6>
 					<span class="col-md-8" style="align: right">
 						<form class="form-inline" id="urlForm">
 							<div class="form-group">
 								<label for="inputImgUrl">לינק:</label>
 							</div>
 							<div class="form-group" id="imgUrlFormGroup">
-								<input type="text" class="form-control" id="inputImgUrl" placeholder="http://" style="direction: LTR;">
+								<input type="text" onClick="this.select();" class="form-control" id="inputImgUrl" placeholder="http://" style="direction: LTR;">
 							</div>
 							<button id="url_button" type="submit" class="btn btn-default">טען</button>
 							<div class="form-group" id="imgUrlFormGroup2">
@@ -64,7 +64,10 @@
 				<div class="col-md-3"></div>
 				<div class="col-md-6" style="text-align: center">
 					<label>שתף</label><br>
-					<input type="text"  onClick="this.select();" class="col-md-2 form-control " id="shareUrl" placeholder="http://..." style="direction: LTR;">
+					<input type="text" onClick="this.select();" class="col-md-2 form-control " id="shareUrl" placeholder="http://..." style="direction: LTR;">
+					<!-- <div style="padding-top: 60px;">
+						<a href="http://www.haaretz.co.il/gallery/design/1.2839770" target="_">קצת רקע</a> (וגם <a href="http://www.haaretz.co.il/blogs/misgav/.premium-1.2841951" target="_">כאן</a>)
+					</div> -->
 				</div>
 				<div class="col-md-3"></div>
 			</div>
