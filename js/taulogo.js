@@ -118,7 +118,7 @@ function updateShareURL() {
 }
 
 function init_all() {
-	home_url = window.location.pathname;
+	home_url = window.location.host;
 	img_canvas = document.getElementById("img_canvas");
 	ctx = img_canvas.getContext('2d');
 	ctx.imageSmoothingEnabled = false;
