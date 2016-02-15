@@ -1,10 +1,12 @@
 var IN_LOGO_COORD_X = 235;
 var IN_LOGO_COORD_Y = 235;
 var CIRCLE_DIAMETER = 380;
-var INSERT_MIN_RATIO = 1.6;
+var INSERT_MIN_RATIO = 1.4;
 var RATIO_W, RATIO_H;
 var logo_img = null;
 var emojiArea = null;
+var home_url = "";
+var current_img = "";
 
 var img_canvas;
 var ctx;
@@ -21,7 +23,9 @@ function init_logo() {
 			img_canvas.height = img_canvas.offsetHeight;
 			img_canvas.style.width = img_canvas.width;
 			redraw_logo();
-			first_emoji();
+			ref_imgsrc = $.urlParam("img");
+			if (ref_imgsrc) insert_in_logo(ref_imgsrc, true);
+			else first_emoji();
 		}
 	}
 }
@@ -47,11 +51,14 @@ function hideLoadError() {
 function insert_in_logo(src, fromWeb) {
 
 	var img = new Image();
+	http://vignette3.wikia.nocookie.net/simpsons/images/d/df/Bart-gangster-psd4202.png/revision/latest?cb=20100720001226
 	img.src = src;
 	
 	if (fromWeb) img.onerror = function() { showLoadError(); };
 
 	img.onload = function() {
+		current_img = img.src;
+		updateShareURL();
 		redraw_logo();
 		hideLoadError();
 
@@ -98,13 +105,38 @@ function setup_download() {
 	$("#downloadImg").click(function() {downloadImg();});
 }
 
+function setup_sendlink() {
+	$("#copylink").click(function() {
+		share_url = location.href + "?img=" + current_img; 
+		alert(share_url);
+	});
+}
+
+function updateShareURL() {
+	share_url = home_url + "?img=" + current_img;
+	$("#shareUrl").val(share_url);
+}
+
 function init_all() {
+	home_url = window.location.pathname;
 	img_canvas = document.getElementById("img_canvas");
 	ctx = img_canvas.getContext('2d');
 	ctx.imageSmoothingEnabled = false;
 
+	setup_sendlink();
 	setup_url_button();
 	setup_emojis();
-	init_logo();
 	setup_download();
+	init_logo();
+}
+
+//returns null if param not set
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
 }

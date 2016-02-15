@@ -1,9 +1,13 @@
 	<html dir="rtl" lang="he">
 	<head>
 		<meta charset="utf-8">
+		<meta property="og:url"	content="http://taulogo.github.io/" />
+		<meta property="og:title" content="TAU Logo Generator" />
+		<meta property="og:description" content="מתקשים עם המתקשים" />
+		<meta property="og:image" content="http://taulogo.github.io/sample.png" />
 
-		<title>TAU Logo Generator</title>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<title>TAU Logo Maker</title>
+		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="emojiarea/jquery.emojiarea.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/fontello/css/fontello.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -11,31 +15,37 @@
 		<script src="emojiarea/packs/emojis.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/taulogo.js"></script>
-
 		
 	</head>
 	<body onload="init_all();">
 		<div class="jumbotron">
 			<div class="container">
-				<h1>מתקשים עם המתקשים</h1>
-				<h2>מחולל לוגואים לאוניברסיטת תל אביב</h2>
+				<h2>מתקשים עם המתקשים</h2>
+				<h4>מחולל לוגואים של אוניברסיטת תל אביב</h4>
 				<!-- <p class="lead">מתקשים עם המתקשים.</p> -->
 			</div>
 		</div>
 
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4">									
-					<h3>בחר אימוג׳י או הכנס לינק לתמונה</h3>
-					<hr>
-					<!-- <hr> -->
-					<span class="col-md-10">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<canvas id="img_canvas" style="width: 100%;"></canvas>
+				</div>
+				<div class="col-md-3"></div>
+			</div>	<!-- /row -->
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8" style="text-align: center">									
+					<br><hr>
+					<h3>בחר אימוג׳י או הדבק לינק לתמונה</h3>
+					<span class="col-md-8" style="align: right">
 						<form class="form-inline" id="urlForm">
 							<div class="form-group">
 								<label for="inputImgUrl">לינק:</label>
 							</div>
 							<div class="form-group" id="imgUrlFormGroup">
-								<input type="text" class="form-control" id="inputImgUrl" placeholder="http://..." style="direction: rtl;">
+								<input type="text" class="form-control" id="inputImgUrl" placeholder="http://" style="direction: LTR;">
 							</div>
 							<button id="url_button" type="submit" class="btn btn-default">טען</button>
 							<div class="form-group" id="imgUrlFormGroup2">
@@ -43,19 +53,34 @@
 							</div>
 						</form>
 					</span>
-					<span class="col-md-2">
+					<span class="col-md-2" style="text-align: left">
 						<a href="javascript:void(0)"><img width="30" height="30" id="emoji_button" src="emojiarea/packs/images/satisfied.png"></a>
 					</span>
-					<br><br><br><hr>
+				</div>
+				<div class="col-md-2"></div>
 					<!-- <div><a id="downloadImg" href="javascript:void(0)">שמור תמונה</a></div> -->
+			</div>
+			<div class="row">
+
+				<div class="col-md-3"></div>
+				<div class="col-md-6" style="text-align: center">
+					<label>שתף</label><br>
+					<input type="text"  onClick="this.select();" class="col-md-2 form-control " id="shareUrl" placeholder="http://..." style="direction: LTR;">
 				</div>
-				<div class="col-md-8">
-					<canvas id="img_canvas" style="width: 100%;"></canvas>
-				</div>
-				<!-- <div class="col-md-2"  style="background-color: green">right</div> -->
-			</div>	<!-- /row -->
+				<div class="col-md-3"></div>
+			</div>
 			<hr>
 			<footer style="direction: ltr;"><h6>Uses <a href="https://github.com/diy/jquery-emojiarea">jQuery Emojiarea</a> with pack expansion from <a href="https://github.com/GittiHab/jquery-emojiarea">GittiHab</a>.</h6></footer>
 		</div>
 	</body>
 	
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-73815808-1', 'auto');
+  ga('send', 'pageview');
+
+</script>

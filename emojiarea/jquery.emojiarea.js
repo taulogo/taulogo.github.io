@@ -233,7 +233,7 @@
 		var $button = this.emojiarea.$button;
 		var offset = $button.offset();
 		var menu_height = parseInt(this.$menu.css("height"));
-		offset.top += $button.outerHeight();
+		offset.top -= $button.outerHeight() + menu_height;
 		offset.left	-= Math.round($button.outerWidth());
 
 		this.$menu.css({
