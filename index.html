@@ -1,0 +1,61 @@
+	<html dir="rtl" lang="he">
+	<head>
+		<meta charset="utf-8">
+
+		<title>TAU Logo Generator</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		
+		<link href="emojiarea/jquery.emojiarea.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/fontello/css/fontello.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="emojiarea/jquery.emojiarea.js"></script>
+		<script src="emojiarea/packs/emojis.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+		
+	</head>
+	<body>
+		<div class="jumbotron">
+			<div class="container">
+				<h1>מתקשים עם המתקשים</h1>
+				<h2>מחולל לוגואים לאוניברסיטת תל אביב</h2>
+				<!-- <p class="lead">מתקשים עם המתקשים.</p> -->
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">									
+					<h3>בחר אימוג׳י או הכנס לינק לתמונה</h3>
+					<hr>
+					<!-- <hr> -->
+					<span class="col-md-10">
+						<form class="form-inline">
+							<div class="form-group">
+								<label for="inputImgUrl">לינק:</label>
+							</div>
+							<div class="form-group" id="imgUrlFormGroup">
+								<input type="text" class="form-control" id="inputImgUrl" placeholder="http://..." style="direction: rtl;">
+							</div>
+							<button id="url_button" type="submit" class="btn btn-default">טען</button>
+							<div class="form-group" id="imgUrlFormGroup2">
+								<label id="inputImgUrlErrorLabel" class="control-label has-error" style="display: none;">לינק לא תקין</label>
+							</div>
+						</form>
+					</span>
+					<span class="col-md-2">
+						<a href="javascript:void(0)"><img width="30" height="30" id="emoji_button" src="emojiarea/packs/images/satisfied.png"></a>
+					</span>
+					<br><br><br><hr>
+					<div><a id="downloadImg" href="javascript:void(0)">שמור תמונה</a></div>
+				</div>
+				<div class="col-md-8">
+					<canvas id="img_canvas" style="width: 100%;"></canvas>
+				</div>
+				<!-- <div class="col-md-2"  style="background-color: green">right</div> -->
+			</div>	<!-- /row -->
+			<hr>
+			<footer style="direction: ltr;"><h6>Uses <a href="https://github.com/diy/jquery-emojiarea">jQuery Emojiarea</a> with pack expansion from <a href="https://github.com/GittiHab/jquery-emojiarea">GittiHab</a>.</h6></footer>
+		</div>
+	</body>
+	<script src="js/taulogo.js"></script>
