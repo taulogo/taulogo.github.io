@@ -82,7 +82,7 @@ function first_emoji() {
 }
 
 function setup_url_button() {
-	$("#url_button").closest('form').on('submit', function(e) {
+	$("#urlForm").on('submit', function(e) {
 		e.preventDefault();
 		insert_in_logo($("#inputImgUrl").val(),true); 
 	});
