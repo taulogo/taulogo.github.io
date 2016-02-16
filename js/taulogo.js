@@ -50,6 +50,8 @@ function init_logo() {
 
 function redraw_logo() {
 	ctx.clearRect(0, 0, img_canvas.width, img_canvas.height);	//clear the canvas
+	ctx.fillStyle = "#ffffff";	//fill with white
+	ctx.fillRect(0,0,img_canvas.width,img_canvas.height);
 	ctx.drawImage(logo_img, 0, 0, img_canvas.width, img_canvas.height);
 }
 
