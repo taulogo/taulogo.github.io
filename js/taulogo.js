@@ -23,7 +23,7 @@ function init_logo() {
 	if (logo_param) {
 		logo_selection = parseInt(logo_param);
 	}
-	else logo_selection = 1;
+	else logo_selection = 0;
 	switch(logo_selection) {
 		case 0:
 			logo_src = LOGO_WITH_TITLE;
