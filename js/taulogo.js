@@ -2,31 +2,45 @@ var IN_LOGO_COORD_X = 235;
 var IN_LOGO_COORD_Y = 235;
 var CIRCLE_DIAMETER = 380;
 var INSERT_MIN_RATIO = 1.4;
+var LOGO_WITH_TITLE = "logo/eng_blank.png";
+var LOGO_NO_TITLE = "logo/blank_notext.png"
+
 var RATIO_W, RATIO_H;
 var logo_img = null;
 var emojiArea = null;
 var home_url = "";
 var current_img = "";
+var current_logo = LOGO_NO_TITLE;
 
 var img_canvas;
 var ctx;
 
 //draw logo
 function init_logo() {
-	if (!logo_img) {
-		logo_img = new Image();
-		logo_img.src = "logo/eng_blank.png";
-		logo_img.onload = function() {
-			RATIO_W = img_canvas.offsetWidth / logo_img.width;
-			img_canvas.style.height = RATIO_W * logo_img.height;
-			img_canvas.width = img_canvas.offsetWidth;
-			img_canvas.height = img_canvas.offsetHeight;
-			img_canvas.style.width = img_canvas.width;
-			redraw_logo();
-			ref_imgsrc = $.urlParam("img");
-			if (ref_imgsrc) insert_in_logo(ref_imgsrc, true);
-			else first_emoji();
-		}
+	var logo_src;
+	logo_img = new Image();
+	logo_selection = parseInt($.urlParam("logo"));
+	switch(logo_selection) {
+		case 0:
+			logo_src = LOGO_WITH_TITLE;
+			break;
+		case 1:
+			logo_src = LOGO_NO_TITLE;
+			break;
+		default:
+			logo_src = LOGO_WITH_TITLE;
+	}
+	logo_img.src = logo_src;
+	logo_img.onload = function() {
+		RATIO_W = img_canvas.offsetWidth / logo_img.width;
+		img_canvas.style.height = RATIO_W * logo_img.height;
+		img_canvas.width = img_canvas.offsetWidth;
+		img_canvas.height = img_canvas.offsetHeight;
+		img_canvas.style.width = img_canvas.width;
+		redraw_logo();
+		ref_imgsrc = $.urlParam("img");
+		if (ref_imgsrc) insert_in_logo(ref_imgsrc, true);
+		else first_emoji();
 	}
 }
 
@@ -122,12 +136,11 @@ function init_all() {
 	img_canvas = document.getElementById("img_canvas");
 	ctx = img_canvas.getContext('2d');
 	ctx.imageSmoothingEnabled = false;
-
 	setup_sendlink();
 	setup_url_button();
 	setup_emojis();
 	setup_download();
-	init_logo();
+	init_logo(current_logo);
 }
 
 //returns null if param not set
