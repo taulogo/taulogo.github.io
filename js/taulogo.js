@@ -10,16 +10,20 @@ var logo_img = null;
 var emojiArea = null;
 var home_url = "";
 var current_img = "";
+var logo_selection = 0;
 var current_logo = LOGO_NO_TITLE;
 
 var img_canvas;
 var ctx;
 
-//draw logo
 function init_logo() {
 	var logo_src;
 	logo_img = new Image();
-	logo_selection = parseInt($.urlParam("logo"));
+	var logo_param = $.urlParam("logo");
+	if (logo_param) {
+		logo_selection = parseInt(logo_param);
+	}
+	else logo_selection = 0;
 	switch(logo_selection) {
 		case 0:
 			logo_src = LOGO_WITH_TITLE;
@@ -65,7 +69,6 @@ function hideLoadError() {
 function insert_in_logo(src, fromWeb) {
 
 	var img = new Image();
-	http://vignette3.wikia.nocookie.net/simpsons/images/d/df/Bart-gangster-psd4202.png/revision/latest?cb=20100720001226
 	img.src = src;
 	
 	if (fromWeb) img.onerror = function() { showLoadError(); };
@@ -79,8 +82,6 @@ function insert_in_logo(src, fromWeb) {
 		var larger_side = Math.max(img.width, img.height);
 		var ratio = Math.min((CIRCLE_DIAMETER * RATIO_W) / larger_side, INSERT_MIN_RATIO);
 
-		// var ratio = Math.max(Math.min(((CIRCLE_DIAMETER * RATIO_W) / larger_side), 1.0), INSERT_MIN_RATIO);
-		console.log(ratio);
 		var w = img.width * ratio;
 		var h = img.height * ratio;
 		var x = (RATIO_W * IN_LOGO_COORD_X) - (w / 2);
@@ -119,15 +120,9 @@ function setup_download() {
 	$("#downloadImg").click(function() {downloadImg();});
 }
 
-function setup_sendlink() {
-	$("#copylink").click(function() {
-		share_url = location.href + "?img=" + current_img; 
-		alert(share_url);
-	});
-}
 
 function updateShareURL() {
-	share_url = home_url + "?img=" + current_img;
+	share_url = home_url + "?img=" + current_img + "&logo=" + logo_selection;
 	$("#shareUrl").val(share_url);
 }
 
@@ -136,7 +131,6 @@ function init_all() {
 	img_canvas = document.getElementById("img_canvas");
 	ctx = img_canvas.getContext('2d');
 	ctx.imageSmoothingEnabled = false;
-	setup_sendlink();
 	setup_url_button();
 	setup_emojis();
 	setup_download();
