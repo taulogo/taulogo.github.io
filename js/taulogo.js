@@ -23,7 +23,7 @@ function init_logo() {
 	if (logo_param) {
 		logo_selection = parseInt(logo_param);
 	}
-	else logo_selection = 0;
+	else logo_selection = 1;
 	switch(logo_selection) {
 		case 0:
 			logo_src = LOGO_WITH_TITLE;
@@ -32,7 +32,7 @@ function init_logo() {
 			logo_src = LOGO_NO_TITLE;
 			break;
 		default:
-			logo_src = LOGO_WITH_TITLE;
+			logo_src = LOGO_NO_TITLE;
 	}
 	logo_img.src = logo_src;
 	logo_img.onload = function() {
@@ -134,7 +134,7 @@ function init_all() {
 	setup_url_button();
 	setup_emojis();
 	setup_download();
-	init_logo(current_logo);
+	init_logo();
 }
 
 //returns null if param not set
